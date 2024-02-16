@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nextcloud package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud 3.14159\n"
+"Report-Msgid-Bugs-To: translations\\@example.com\n"
+"POT-Creation-Date: 2024-02-15 17:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/andrey/coding/l10n_example/lib/main.py:30
+msgid "UI example"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/specialAppInfoFakeDummyForL10nScript.php:2
+msgid "UI Example"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/specialAppInfoFakeDummyForL10nScript.php:3
+msgid "Example of displaying UI elements with l10n support"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/specialAppInfoFakeDummyForL10nScript.php:4
+msgid "Simplest skeleton of the Nextcloud application written in Python"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/components/Navigation.vue:6
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:2
+msgid "Home page"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/components/Navigation.vue:13
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:4
+msgid "Files page"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:6
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:6
+msgid "ExApp UI example"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:7
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:8
+msgid ""
+"All front-end stuff kept the same for seamless migration for developers. All "
+"needed stuff is proxying via AppAPI"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:8
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:10
+msgid "Initial value"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:10
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:12
+msgid "Initial value from store"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:13
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:14
+msgid "Verify initial value"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:6
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:16
+msgid "Test file pickers"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:8
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:18
+msgid "Selected file from Nextcloud: "
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:11
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:20
+msgid "File info: "
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:12
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:22
+msgid "File size: "
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:14
+#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:62
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:24
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:28
+msgid "Select test file"
+msgstr ""
+
+#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:17
+#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:26
+msgid "Send test file to ExApp"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/src/router/index.js:30
+msgid "ExApp UI Example"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/src/router/index.js:40
+msgid "ExApp send file"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/src/store/example.js:32
+msgid "Initial value is correct"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/src/store/example.js:36
+msgid "Initial value is incorrect"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/src/store/example.js:45
+msgid "File sent"
+msgstr ""
+
+#: /home/andrey/coding/l10n_example/src/store/example.js:48
+msgid "Failed to send file"
+msgstr ""

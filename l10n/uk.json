@@ -1,0 +1,26 @@
+{ "translations": {
+    "UI example" : "Приклад UI",
+    "UI Example" : "Приклад UI",
+    "Example of displaying UI elements with l10n support" : "Приклад відображення UI елементів з підтримкою перекладів",
+    "Simplest skeleton of the Nextcloud application written in Python" : "Найпростіший шаблон Nextcloud застосунку написаного за допомогою Python",
+    "Home page" : "Додому",
+    "Files page" : "Файли",
+    "ExApp UI example" : "Приклад UI",
+    "All front-end stuff kept the same for seamless migration for developers. All needed stuff is proxying via AppAPI" : "Для фронтенду все залишилось як було для безшовної міграції для розробників. Всі необхідні речі проксовані через AppAPI",
+    "Initial value" : "Базове значення",
+    "Initial value from store" : "Базове значення з магазину",
+    "Verify initial value" : "Підтвердити базове значення",
+    "Test file pickers" : "Тест вибору файлу",
+    "Selected file from Nextcloud: " : "Вибраний файл з Nextcloud: ",
+    "File info: " : "Інформація про файл: ",
+    "File size: " : "Розмір файлу: ",
+    "Select test file" : "Обрати тестовий файл",
+    "Send test file to ExApp" : "Відправити тестовий файл до ExApp",
+    "ExApp UI Example" : "Приклад UI",
+    "ExApp send file" : "ExApp відправити файл",
+    "Initial value is correct" : "Базове значення правильне",
+    "Initial value is incorrect" : "Базове значення неправильне",
+    "File sent" : "Файл відправлено",
+    "Failed to send file" : "Помилка відправки файлу"
+},"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);"
+}

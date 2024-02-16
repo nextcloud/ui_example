@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<info>
+	<id>ui_example</id>
+	<name>UI Example</name>
+	<summary>Example of displaying UI elements with l10n support</summary>
+	<description>
+	<![CDATA[Simplest skeleton of the Nextcloud application written in Python]]>
+	</description>
+	<version>1.0.0</version>
+	<licence>MIT</licence>
+	<author mail="andrey18106x@gmail.com" homepage="https://github.com/andrey18106">Andrey Borysenko</author>
+	<author mail="bigcat88@icloud.com" homepage="https://github.com/bigcat88">Alexander Piskun</author>
+	<namespace>PyUIExampleL10N</namespace>
+	<category>tools</category>
+	<website>https://github.com/cloud-py-api/ui_example</website>
+	<bugs>https://github.com/cloud-py-api/ui_example/issues</bugs>
+	<repository type="git">https://github.com/cloud-py-api/ui_example</repository>
+	<dependencies>
+		<nextcloud min-version="27" max-version="29"/>
+	</dependencies>
+	<external-app>
+		<docker-install>
+			<registry>ghcr.io</registry>
+			<image>cloud-py-api/ui_example</image>
+			<image-tag>latest</image-tag>
+		</docker-install>
+		<scopes>
+		</scopes>
+		<system>false</system>
+	</external-app>
+</info>
