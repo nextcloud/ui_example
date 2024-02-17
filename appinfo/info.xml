@@ -4,7 +4,7 @@
 	<name>UI Example</name>
 	<summary>Example of displaying UI elements with l10n support</summary>
 	<description>
-	<![CDATA[Simplest skeleton of the Nextcloud application written in Python]]>
+	<![CDATA[UI & Translations skeleton of the Nextcloud application written in Python]]>
 	</description>
 	<version>1.0.0</version>
 	<licence>MIT</licence>
