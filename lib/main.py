@@ -23,7 +23,7 @@ import gettext
 # ../locale/<lang>/LC_MESSAGES/<app_id>.(mo|po)
 localedir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "locale")
 locale.setlocale(locale.LC_ALL)
-locale.bindtextdomain(os.getenv("APP_ID"), localedir)
+# locale.bindtextdomain(os.getenv("APP_ID"), localedir)  - do we need this? It does not work on macOS..
 my_l10n = gettext.translation(
     os.getenv("APP_ID"), localedir, fallback=True, languages=["en", "uk"]
 )

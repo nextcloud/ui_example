@@ -51,22 +51,25 @@ run:
 .PHONY: register27
 register27:
 	docker exec master-stable27-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
+	docker exec master-stable27-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-stable27-1:/tmp/ui_example_l10n
 	docker exec master-stable27-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
-  "{\"appid\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035,\"scopes\":[],\"system_app\":0}" \
+  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035,\"scopes\":[],\"system_app\":0, \"translations_folder\":\"\/tmp\/ui_example_l10n\"}" \
   --force-scopes --wait-finish
 
 .PHONY: register28
 register28:
 	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
+	docker exec master-stable28-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-stable28-1:/tmp/ui_example_l10n
 	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
-  "{\"appid\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035,\"scopes\":[],\"system_app\":0}" \
+  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035,\"scopes\":[],\"system_app\":0, \"translations_folder\":\"\/tmp\/ui_example_l10n\"}" \
   --force-scopes --wait-finish
 
 .PHONY: register
 register:
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
+	docker exec master-nextcloud-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-nextcloud-1-1:/tmp/ui_example_l10n
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
-  "{\"appid\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035,\"scopes\":[],\"system_app\":0}" \
+  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035,\"scopes\":[],\"system_app\":0, \"translations_folder\":\"\/tmp\/ui_example_l10n\"}" \
   --force-scopes --wait-finish
 
 .PHONY: translation_templates
