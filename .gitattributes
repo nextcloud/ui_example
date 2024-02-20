@@ -4,6 +4,8 @@
 # Denote all files that are truly binary and should not be modified
 js/* binary
 screenshots/* binary
+locales/* binary
+translationfiles/* binary
 *.png binary
 *.hif binary
 

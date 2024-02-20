@@ -5,7 +5,7 @@ import random
 from contextlib import asynccontextmanager
 from typing import Annotated
 
-from fastapi import FastAPI, responses, Header, Request
+from fastapi import FastAPI, responses, Header, Request, Depends
 from starlette.middleware.base import BaseHTTPMiddleware
 from pydantic import BaseModel
 
@@ -17,7 +17,8 @@ from nc_py_api.ex_app import (
     SettingsField,
     SettingsFieldType,
     SettingsForm,
-    UiActionFileInfo
+    UiActionFileInfo,
+    nc_app
 )
 from contextvars import ContextVar
 
@@ -32,7 +33,7 @@ def _(text):
     return current_translator.get().gettext(text)
 
 
-print(_("UI example"))  # this does not work
+print(_("UI example"))
 
 
 class LocalizationMiddleware(BaseHTTPMiddleware):
@@ -222,13 +223,18 @@ async def verify_initial_value(
         content={"initial_value": str(random.randint(0, 100))}, status_code=200
     )
 
+
 @APP.post("/test_menu")
 async def test_menu_handler(
     file: UiActionFileInfo,
+    nc: Annotated[NextcloudApp, Depends(nc_app)],
     accept_language: Annotated[str | None, Header()] = None
 ):
     print(f'File: {file}')
     print(f'Accept-Language: {accept_language}')
+    print(_("Test menu"))
+    # Note: Only singular string translations are supported
+    nc.notifications.create(_('Test notification subject'), _("Test notification message"))
     return responses.Response()
 
 
