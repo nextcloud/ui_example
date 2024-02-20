@@ -1,6 +1,5 @@
 """Example with which we test UI elements with L10N support."""
 
-# import locale
 import os
 import random
 from contextlib import asynccontextmanager
@@ -20,30 +19,31 @@ from nc_py_api.ex_app import (
     SettingsForm,
     UiActionFileInfo
 )
+from contextvars import ContextVar
 
-from gettext import gettext as _, translation
+from gettext import translation
 
-# ../locale/<lang>/LC_MESSAGES/<app_id>.(mo|po)
-# localedir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "locale")
-# locale.setlocale(locale.LC_ALL)
-# my_l10n = gettext.translation(
-#     os.getenv("APP_ID"), localedir, fallback=True, languages=["en"]  # English is always available and is the default
-# )
-# my_l10n.install()
+LOCALE_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "locale")
+current_translator = ContextVar("current_translator")
+current_translator.set(translation(os.getenv("APP_ID"), LOCALE_DIR, languages=["en"], fallback=True))
 
-# _ = my_l10n.gettext
-# _n = my_l10n.ngettext
+
+def _(text):
+    return current_translator.get().gettext(text)
+
+
+print(_("UI example"))  # this does not work
 
 
 class LocalizationMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
-        localedir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "locale")
         request_lang = request.headers.get('Accept-Language', 'en')
         print(f"DEBUG: lang={request_lang}")
         translator = translation(
-            os.getenv("APP_ID"), localedir, languages=[request_lang], fallback=True
+            os.getenv("APP_ID"), LOCALE_DIR, languages=[request_lang], fallback=True
         )
-        translator.install()
+        current_translator.set(translator)
+        print(_("UI example"))
         response = await call_next(request)
         return response
 
