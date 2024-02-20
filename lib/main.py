@@ -186,8 +186,6 @@ SETTINGS_EXAMPLE = SettingsForm(
 
 def enabled_handler(enabled: bool, nc: NextcloudApp) -> str:
     print(f"enabled={enabled}")
-
-    z = _("Test menu")
     if enabled:
         nc.ui.resources.set_initial_state(
             "top_menu",
