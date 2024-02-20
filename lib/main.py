@@ -1,12 +1,13 @@
 """Example with which we test UI elements with L10N support."""
 
-import locale
+# import locale
 import os
 import random
 from contextlib import asynccontextmanager
 from typing import Annotated
 
-from fastapi import FastAPI, responses, Header
+from fastapi import FastAPI, responses, Header, Request
+from starlette.middleware.base import BaseHTTPMiddleware
 from pydantic import BaseModel
 
 from nc_py_api import NextcloudApp
@@ -20,18 +21,32 @@ from nc_py_api.ex_app import (
     UiActionFileInfo
 )
 
-import gettext
+from gettext import gettext as _, translation
 
 # ../locale/<lang>/LC_MESSAGES/<app_id>.(mo|po)
-localedir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "locale")
-locale.setlocale(locale.LC_ALL)
-my_l10n = gettext.translation(
-    os.getenv("APP_ID"), localedir, fallback=True, languages=["en"]  # English is always available and is the default
-)
-my_l10n.install()
+# localedir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "locale")
+# locale.setlocale(locale.LC_ALL)
+# my_l10n = gettext.translation(
+#     os.getenv("APP_ID"), localedir, fallback=True, languages=["en"]  # English is always available and is the default
+# )
+# my_l10n.install()
 
-_ = my_l10n.gettext
-_n = my_l10n.ngettext
+# _ = my_l10n.gettext
+# _n = my_l10n.ngettext
+
+
+class LocalizationMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        localedir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "locale")
+        request_lang = request.headers.get('Accept-Language', 'en')
+        print(f"DEBUG: lang={request_lang}")
+        translator = translation(
+            os.getenv("APP_ID"), localedir, languages=[request_lang], fallback=True
+        )
+        translator.install()
+        response = await call_next(request)
+        return response
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -42,6 +57,7 @@ async def lifespan(app: FastAPI):
 
 APP = FastAPI(lifespan=lifespan)
 APP.add_middleware(AppAPIAuthMiddleware)
+APP.add_middleware(LocalizationMiddleware)
 
 SETTINGS_EXAMPLE = SettingsForm(
     id="settings_example",
@@ -170,6 +186,8 @@ SETTINGS_EXAMPLE = SettingsForm(
 
 def enabled_handler(enabled: bool, nc: NextcloudApp) -> str:
     print(f"enabled={enabled}")
+
+    z = _("Test menu")
     if enabled:
         nc.ui.resources.set_initial_state(
             "top_menu",
