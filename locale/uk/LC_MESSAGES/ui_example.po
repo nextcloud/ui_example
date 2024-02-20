@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2024-02-15 17:20+0200\n"
-"PO-Revision-Date: 2024-02-15 17:21+0200\n"
+"POT-Creation-Date: 2024-02-20 15:37+0200\n"
+"PO-Revision-Date: 2024-02-20 16:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk_UA\n"
@@ -19,40 +19,208 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.4\n"
 
-#: /home/andrey/coding/l10n_example/lib/main.py:30
+#: /home/andrey/coding/ui_example/lib/main.py:41
 msgid "UI example"
 msgstr "Приклад UI"
 
-#: /home/andrey/coding/l10n_example/specialAppInfoFakeDummyForL10nScript.php:2
+#: /home/andrey/coding/ui_example/lib/main.py:52
+msgid "Example of declarative settings"
+msgstr "Приклад декларативних налаштувань"
+
+#: /home/andrey/coding/ui_example/lib/main.py:53
+msgid "These fields are rendered dynamically from declarative schema"
+msgstr "Ці поля сгенеровані динамічно з декларавтиної схеми"
+
+#: /home/andrey/coding/ui_example/lib/main.py:58
+#: /home/andrey/coding/ui_example/lib/main.py:129
+#: /home/andrey/coding/ui_example/lib/main.py:132
+#: /home/andrey/coding/ui_example/lib/main.py:138
+#: /home/andrey/coding/ui_example/lib/main.py:141
+msgid "Select some option setting"
+msgstr "Виберіть якусь опцію"
+
+#: /home/andrey/coding/ui_example/lib/main.py:61
+msgid "Select some multiple options"
+msgstr "Виберіть якісь множинні опції"
+
+#: /home/andrey/coding/ui_example/lib/main.py:66
+#: /home/andrey/coding/ui_example/lib/main.py:70
+msgid "Choose init status check background job interval"
+msgstr "Виберіть інтервал фонової задачі перевірки статусу"
+
+#: /home/andrey/coding/ui_example/lib/main.py:67
+msgid "How often ExApp should check for initialization status"
+msgstr "Як часто виконувати перевірку ініціалізації"
+
+#: /home/andrey/coding/ui_example/lib/main.py:72
+msgid "Each 40 minutes"
+msgstr "Кожні 40 хвилин"
+
+#: /home/andrey/coding/ui_example/lib/main.py:73
+msgid "Each 60 minutes"
+msgstr "Кожні 60 хвилин"
+
+#: /home/andrey/coding/ui_example/lib/main.py:74
+msgid "Each 120 minutes"
+msgstr "Кожні 120 хвилин"
+
+#: /home/andrey/coding/ui_example/lib/main.py:75
+msgid "Each day"
+msgstr "Кожен день"
+
+#: /home/andrey/coding/ui_example/lib/main.py:80
+msgid "Default text field"
+msgstr "Звичайне текстове поле"
+
+#: /home/andrey/coding/ui_example/lib/main.py:81
+msgid "Set some simple text setting"
+msgstr "Встановити простий текстовий параметр"
+
+#: /home/andrey/coding/ui_example/lib/main.py:84
+msgid "Enter text setting"
+msgstr "Параметр email"
+
+#: /home/andrey/coding/ui_example/lib/main.py:88
+msgid "Email field"
+msgstr "Поле email"
+
+#: /home/andrey/coding/ui_example/lib/main.py:89
+msgid "Set email config"
+msgstr "Встановіть email конфугурацію"
+
+#: /home/andrey/coding/ui_example/lib/main.py:92
+msgid "Enter email"
+msgstr "Введіть email"
+
+#: /home/andrey/coding/ui_example/lib/main.py:96
+msgid "Tel field"
+msgstr "Поле телефону"
+
+#: /home/andrey/coding/ui_example/lib/main.py:97
+msgid "Set tel config"
+msgstr "Вкажіть конфігурації телефону"
+
+#: /home/andrey/coding/ui_example/lib/main.py:100
+msgid "Enter your tel"
+msgstr "Введіть ваш телефон"
+
+#: /home/andrey/coding/ui_example/lib/main.py:104
+msgid "Url (website) field"
+msgstr "Посилання на веб-сайт"
+
+#: /home/andrey/coding/ui_example/lib/main.py:105
+msgid "Set url config"
+msgstr "Встановіть конфігурацію посилання"
+
+#: /home/andrey/coding/ui_example/lib/main.py:108
+msgid "Enter url"
+msgstr "Введіть посилання"
+
+#: /home/andrey/coding/ui_example/lib/main.py:112
+msgid "Number field"
+msgstr "Введіть число"
+
+#: /home/andrey/coding/ui_example/lib/main.py:113
+msgid "Set number config"
+msgstr "Опція число"
+
+#: /home/andrey/coding/ui_example/lib/main.py:116
+msgid "Enter number value"
+msgstr "Введіть числову конфігурацію"
+
+#: /home/andrey/coding/ui_example/lib/main.py:120
+msgid "Password"
+msgstr "Пароль"
+
+#: /home/andrey/coding/ui_example/lib/main.py:121
+msgid "Set some secure value setting"
+msgstr "Встановіть захищене значення параметру"
+
+#: /home/andrey/coding/ui_example/lib/main.py:124
+msgid "Set secure value"
+msgstr "Встановіть захищене значення"
+
+#: /home/andrey/coding/ui_example/lib/main.py:128
+#: /home/andrey/coding/ui_example/lib/main.py:137
+msgid "Selection"
+msgstr "Випадаючий список"
+
+#: /home/andrey/coding/ui_example/lib/main.py:146
+msgid "Toggle something"
+msgstr "Перемикач"
+
+#: /home/andrey/coding/ui_example/lib/main.py:147
+#: /home/andrey/coding/ui_example/lib/main.py:155
+msgid "Select checkbox option setting"
+msgstr "Виберіть чекбокс"
+
+#: /home/andrey/coding/ui_example/lib/main.py:150
+msgid "Verify something if enabled"
+msgstr "Верифікувати чи щось увімкнено"
+
+#: /home/andrey/coding/ui_example/lib/main.py:154
+msgid "Multiple checkbox toggles, describing one setting"
+msgstr "Множинні чекбокс перемикачі, відповідаючих одному параметру"
+
+#: /home/andrey/coding/ui_example/lib/main.py:162
+msgid "Radio toggles, describing one setting like single select"
+msgstr "Радіо перемикачі, відповідаючих одному параметру як одиночний select"
+
+#: /home/andrey/coding/ui_example/lib/main.py:163
+msgid "Select radio option setting"
+msgstr "Налаштування одиночний перемикач"
+
+#: /home/andrey/coding/ui_example/lib/main.py:165
+msgid "Select single toggle"
+msgstr "Одиночний перемикач"
+
+#: /home/andrey/coding/ui_example/lib/main.py:167
+msgid "First radio"
+msgstr "Перший перемикач"
+
+#: /home/andrey/coding/ui_example/lib/main.py:167
+msgid "Second radio"
+msgstr "Другий перемикач"
+
+#: /home/andrey/coding/ui_example/lib/main.py:167
+msgid "Third radio"
+msgstr "Третій перемикач"
+
+#: /home/andrey/coding/ui_example/lib/main.py:184
+msgid "Test menu"
+msgstr "Тестове меню"
+
+#: /home/andrey/coding/ui_example/specialAppInfoFakeDummyForL10nScript.php:2
 msgid "UI Example"
 msgstr "Приклад UI"
 
-#: /home/andrey/coding/l10n_example/specialAppInfoFakeDummyForL10nScript.php:3
+#: /home/andrey/coding/ui_example/specialAppInfoFakeDummyForL10nScript.php:3
 msgid "Example of displaying UI elements with l10n support"
 msgstr "Приклад відображення UI елементів з підтримкою перекладів"
 
-#: /home/andrey/coding/l10n_example/specialAppInfoFakeDummyForL10nScript.php:4
-msgid "Simplest skeleton of the Nextcloud application written in Python"
+#: /home/andrey/coding/ui_example/specialAppInfoFakeDummyForL10nScript.php:4
+msgid ""
+"UI & Translations skeleton of the Nextcloud application written in Python"
 msgstr ""
 "Найпростіший шаблон Nextcloud застосунку написаного за допомогою Python"
 
-#. TRANSLATORS y/coding/l10n_example/src/components/Navigation.vue:6
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:2
+#. TRANSLATORS src/components/Navigation.vue:6
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:2
 msgid "Home page"
 msgstr "Додому"
 
-#. TRANSLATORS y/coding/l10n_example/src/components/Navigation.vue:13
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:4
+#. TRANSLATORS src/components/Navigation.vue:13
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:4
 msgid "Files page"
 msgstr "Файли"
 
-#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:6
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:6
+#. TRANSLATORS src/views/ExAppView.vue:6
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:6
 msgid "ExApp UI example"
 msgstr "Приклад UI"
 
-#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:7
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:8
+#. TRANSLATORS src/views/ExAppView.vue:7
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:8
 msgid ""
 "All front-end stuff kept the same for seamless migration for developers. All "
 "needed stuff is proxying via AppAPI"
@@ -60,74 +228,74 @@ msgstr ""
 "Для фронтенду все залишилось як було для безшовної міграції для розробників. "
 "Всі необхідні речі проксовані через AppAPI"
 
-#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:8
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:10
+#. TRANSLATORS src/views/ExAppView.vue:8
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:10
 msgid "Initial value"
 msgstr "Базове значення"
 
-#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:10
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:12
+#. TRANSLATORS src/views/ExAppView.vue:10
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:12
 msgid "Initial value from store"
 msgstr "Базове значення з магазину"
 
-#. TRANSLATORS y/coding/l10n_example/src/views/ExAppView.vue:13
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:14
+#. TRANSLATORS src/views/ExAppView.vue:13
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:14
 msgid "Verify initial value"
 msgstr "Підтвердити базове значення"
 
-#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:6
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:16
+#. TRANSLATORS src/views/FilePicker.vue:6
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:16
 msgid "Test file pickers"
 msgstr "Тест вибору файлу"
 
-#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:8
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:18
+#. TRANSLATORS src/views/FilePicker.vue:8
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:18
 msgid "Selected file from Nextcloud: "
 msgstr "Вибраний файл з Nextcloud: "
 
-#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:11
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:20
+#. TRANSLATORS src/views/FilePicker.vue:11
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:20
 msgid "File info: "
 msgstr "Інформація про файл: "
 
-#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:12
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:22
+#. TRANSLATORS src/views/FilePicker.vue:12
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:22
 msgid "File size: "
 msgstr "Розмір файлу: "
 
-#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:14
-#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:62
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:24
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:28
+#. TRANSLATORS src/views/FilePicker.vue:14
+#. TRANSLATORS src/views/FilePicker.vue:62
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:24
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:28
 msgid "Select test file"
 msgstr "Обрати тестовий файл"
 
-#. TRANSLATORS y/coding/l10n_example/src/views/FilePicker.vue:17
-#: /home/andrey/coding/l10n_example/specialVueFakeDummyForL10nScript.js:26
+#. TRANSLATORS src/views/FilePicker.vue:17
+#: /home/andrey/coding/ui_example/specialVueFakeDummyForL10nScript.js:26
 msgid "Send test file to ExApp"
 msgstr "Відправити тестовий файл до ExApp"
 
-#: /home/andrey/coding/l10n_example/src/router/index.js:30
+#: /home/andrey/coding/ui_example/src/router/index.js:30
 msgid "ExApp UI Example"
 msgstr "Приклад UI"
 
-#: /home/andrey/coding/l10n_example/src/router/index.js:40
+#: /home/andrey/coding/ui_example/src/router/index.js:40
 msgid "ExApp send file"
 msgstr "ExApp відправити файл"
 
-#: /home/andrey/coding/l10n_example/src/store/example.js:32
+#: /home/andrey/coding/ui_example/src/store/example.js:32
 msgid "Initial value is correct"
 msgstr "Базове значення правильне"
 
-#: /home/andrey/coding/l10n_example/src/store/example.js:36
+#: /home/andrey/coding/ui_example/src/store/example.js:36
 msgid "Initial value is incorrect"
 msgstr "Базове значення неправильне"
 
-#: /home/andrey/coding/l10n_example/src/store/example.js:45
+#: /home/andrey/coding/ui_example/src/store/example.js:45
 msgid "File sent"
 msgstr "Файл відправлено"
 
-#: /home/andrey/coding/l10n_example/src/store/example.js:48
+#: /home/andrey/coding/ui_example/src/store/example.js:48
 msgid "Failed to send file"
 msgstr "Помилка відправки файлу"
 
