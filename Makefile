@@ -30,12 +30,6 @@ build-push:
 	docker login ghcr.io
 	docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/cloud-py-api/ui_example:latest .
 
-.PHONY: run27
-run27:
-	docker exec master-stable27-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
-	docker exec master-stable27-1 sudo -u www-data php occ app_api:app:register ui_example --force-scopes \
-		--info-xml https://raw.githubusercontent.com/cloud-py-api/nc_py_api/main/examples/as_app/ui_example/appinfo/info.xml
-
 .PHONY: run28
 run28:
 	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
