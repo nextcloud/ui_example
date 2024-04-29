@@ -2,10 +2,12 @@
 
 import os
 import random
+import time
 from contextlib import asynccontextmanager
 from typing import Annotated
 
 from fastapi import FastAPI, responses, Header, Request, Depends
+from fastapi.responses import StreamingResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from pydantic import BaseModel
 
@@ -197,6 +199,38 @@ def enabled_handler(enabled: bool, nc: NextcloudApp) -> str:
         nc.ui.resources.set_script("top_menu", "first_menu", "js/ui_example-main")
         nc.ui.top_menu.register("first_menu", "UI example", "img/app.svg")
         nc.ui.files_dropdown_menu.register("test_menu", _("Test menu"), "/test_menu", mime="image/jpeg", icon="img/app-dark.svg")
+        nc.occ_commands.register("ui_example:ping", "/occ_ping")
+        nc.occ_commands.register(
+            "ui_example:setup",
+            "/occ_setup",
+            arguments=[
+                {
+                    "name": "test_arg",
+                    "mode": "required",
+                    "description": "Test argument",
+                }
+            ],
+        )
+        nc.occ_commands.register(
+            "ui_example:stream",
+            "/occ_stream",
+            arguments=[
+                {
+                    "name": "stream_count",
+                    "mode": "required",
+                    "description": "Number of stream rows",
+                }
+            ],
+            options=[
+                {
+                    "name": "double",
+                    "mode": "optional",
+                    "description": "Double the stream rows",
+                    "default": False,
+                }
+            ],
+        )
+
 
         if nc.srv_version["major"] >= 29:
             nc.ui.settings.register_form(SETTINGS_EXAMPLE)
@@ -207,6 +241,9 @@ def enabled_handler(enabled: bool, nc: NextcloudApp) -> str:
         nc.ui.resources.delete_script("top_menu", "first_menu", "js/ui_example-main")
         nc.ui.top_menu.unregister("first_menu")
         nc.ui.files_dropdown_menu.unregister("test_menu")
+        nc.occ_commands.unregister("ui_example:ping")
+        nc.occ_commands.unregister("ui_example:setup")
+        nc.occ_commands.unregister("ui_example:stream")
     return ""
 
 
@@ -238,15 +275,46 @@ async def test_menu_handler(
     return responses.Response()
 
 
-class FileInfo(BaseModel):
-    getlastmodified: str
-    getetag: str
-    getcontenttype: str
-    fileid: int
-    permissions: str
-    size: int
-    getcontentlength: int
-    favorite: int
+class OccPayload(BaseModel):
+    arguments: dict | None = None
+    options: dict | None = None
+
+
+class OccData(BaseModel):
+    occ: OccPayload
+
+
+@APP.post("/occ_ping")
+async def occ_ping():
+    return responses.Response(content="<info>PONG</info>\n")
+
+
+@APP.post("/occ_setup")
+async def occ_setup(data: OccData):
+    print(f"params: {data}")
+    test_arg = data.occ.arguments['test_arg']
+    print(f"test_arg: {test_arg}")
+    if test_arg == "test":
+        return responses.Response(content="<info>OK</info>\n")
+    else:
+        return responses.Response(content="<error>ERROR</error>\n")
+
+
+def fake_data_streamer(data: OccData):
+    stream_count = int(data.occ.arguments['stream_count'])
+    if not stream_count:
+        stream_count = 1
+    if 'double' in data.occ.options:
+        stream_count *= 2
+    for i in range(stream_count):
+        yield f"<info>Test stream row {i}</info>\n"
+        time.sleep(0.5)
+
+
+@APP.post("/occ_stream")
+async def occ_stream(data: OccData):
+    print(f"params: {data}")
+    return StreamingResponse(fake_data_streamer(data), status_code=200, media_type="text/plain")
 
 
 @APP.post("/nextcloud_file")
