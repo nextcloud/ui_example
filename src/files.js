@@ -38,6 +38,7 @@ const requestFileInfo = async (path) => {
 }
 
 const searchByFileId = async (fileId) => {
+	// https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/search.html#examples-search-bodies
 	const searchDavRequest = `<?xml version="1.0" encoding="UTF-8"?>
 		<d:searchrequest xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
 			<d:basicsearch>
