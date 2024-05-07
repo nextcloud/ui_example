@@ -277,10 +277,13 @@ async def test_menu_handler(
     nc.notifications.create(_('Test notification subject'), _("Test notification message"))
     return responses.Response()
 
+class NodesPayload(BaseModel):
+    files: list[UiActionFileInfo]
+
 
 @APP.post("/test_redirect")
 async def test_menu_handler(
-    files: list[UiActionFileInfo],
+    files: NodesPayload,
     nc: Annotated[NextcloudApp, Depends(nc_app)],
     accept_language: Annotated[str | None, Header()] = None
 ):
@@ -288,7 +291,7 @@ async def test_menu_handler(
     print(f'Accept-Language: {accept_language}')
     print(_("Test redirect"))
     nc.notifications.create(_('Test redirect notification subject'), _("Test redirect notification message"))
-    return responses.Response(json={"redirect_handler": "first_menu/second_page"})
+    return responses.JSONResponse(content={"redirect_handler": "first_menu/second_page"})
 
 
 class OccPayload(BaseModel):
