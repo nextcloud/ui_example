@@ -28,6 +28,31 @@
 			<value>OCC_COMMAND</value>
 			<value>NOTIFICATIONS</value>
 		</scopes>
-		<system>false</system>
+		<routes>
+			<route>
+				<url>img\/.*</url>
+				<verb>GET</verb>
+				<access_level>USER</access_level>
+				<headers_to_exclude>[]</headers_to_exclude>
+			</route>
+			<route>
+				<url>js\/.*</url>
+				<verb>GET</verb>
+				<access_level>USER</access_level>
+				<headers_to_exclude>[]</headers_to_exclude>
+			</route>
+			<route>
+				<url>css\/.*</url>
+				<verb>GET</verb>
+				<access_level>USER</access_level>
+				<headers_to_exclude>[]</headers_to_exclude>
+			</route>
+			<route>
+				<url>api\/.*</url>
+				<verb>GET,POST,PUT,DELETE</verb>
+				<access_level>USER</access_level>
+				<headers_to_exclude>[]</headers_to_exclude>
+			</route>
+		</routes>
 	</external-app>
 </info>
