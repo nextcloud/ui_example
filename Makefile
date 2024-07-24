@@ -37,7 +37,7 @@ run28:
 		--info-xml https://raw.githubusercontent.com/cloud-py-api/nc_py_api/main/examples/as_app/ui_example/appinfo/info.xml
 
 .PHONY: run29
-run28:
+run29:
 	docker exec master-stable29-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
 	docker exec master-stable29-1 sudo -u www-data php occ app_api:app:register ui_example --force-scopes \
 		--info-xml https://raw.githubusercontent.com/cloud-py-api/nc_py_api/main/examples/as_app/ui_example/appinfo/info.xml
