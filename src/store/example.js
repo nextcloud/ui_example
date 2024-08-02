@@ -20,7 +20,7 @@ const getters = {
 
 const actions = {
 	verifyInitialStateValue(context, value) {
-		axios.post(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/verify_initial_value`), {
+		axios.post(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/api/verify_initial_value`), {
 			initial_value: value,
 		})
 			.then((res) => {
@@ -38,7 +38,7 @@ const actions = {
 	},
 
 	sendNextcloudFileToExApp(context, fileInfo) {
-		axios.post(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/nextcloud_file`), {
+		axios.post(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/api/nextcloud_file`), {
 			file_info: fileInfo,
 		})
 			.then(() => {

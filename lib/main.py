@@ -254,7 +254,7 @@ class Button1Format(BaseModel):
     initial_value: str
 
 
-@APP.post("/verify_initial_value")
+@APP.post("/api/verify_initial_value")
 async def verify_initial_value(
     input1: Button1Format,
 ):
@@ -264,7 +264,7 @@ async def verify_initial_value(
     )
 
 
-@APP.post("/test_menu")
+@APP.post("/api/test_menu")
 async def test_menu_handler(
     file: UiActionFileInfo,
     nc: Annotated[NextcloudApp, Depends(nc_app)],
@@ -336,7 +336,7 @@ async def occ_stream(data: OccData):
     return StreamingResponse(fake_data_streamer(data), status_code=200, media_type="text/plain")
 
 
-@APP.post("/nextcloud_file")
+@APP.post("/api/nextcloud_file")
 async def nextcloud_file(
     args: dict,
 ):
