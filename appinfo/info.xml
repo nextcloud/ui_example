@@ -16,7 +16,7 @@
 	<bugs>https://github.com/cloud-py-api/ui_example/issues</bugs>
 	<repository type="git">https://github.com/cloud-py-api/ui_example</repository>
 	<dependencies>
-		<nextcloud min-version="28" max-version="30"/>
+		<nextcloud min-version="28" max-version="31"/>
 	</dependencies>
 	<external-app>
 		<docker-install>
@@ -24,10 +24,6 @@
 			<image>cloud-py-api/ui_example</image>
 			<image-tag>latest</image-tag>
 		</docker-install>
-		<scopes>
-			<value>OCC_COMMAND</value>
-			<value>NOTIFICATIONS</value>
-		</scopes>
 		<routes>
 			<route>
 				<url>img\/.*</url>
