@@ -272,6 +272,9 @@ class Button1Format(BaseModel):
 class Button2Format(BaseModel):
     sensitive_value: str
 
+class Button3Format(BaseModel):
+    preference_value: str
+
 
 @APP.post("/api/verify_initial_value")
 async def verify_initial_value(
@@ -291,6 +294,18 @@ async def verify_sensitive_value(
     sensitive_value = nc.appconfig_ex.get_value("test_ex_app_sensitive_field")
     print("Sensitive value: ", sensitive_value)
     return responses.JSONResponse(content={"sensitive_value": sensitive_value}, status_code=200)
+
+
+@APP.post("/api/verify_preference_value")
+async def verify_preference_value(
+    input1: Button3Format,
+    nc: Annotated[NextcloudApp, Depends(nc_app)],
+):
+    nc.preferences_ex.set_value("test_ex_app_sensitive_field", input1.preference_value, sensitive=True)
+    preference_value = nc.preferences_ex.get_value("test_ex_app_sensitive_field")
+    print("Old preference value: ", input1.preference_value)
+    print("Preference value: ", preference_value)
+    return responses.JSONResponse(content={"preference_value": preference_value}, status_code=200)
 
 
 @APP.post("/api/test_menu")

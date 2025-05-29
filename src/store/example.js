@@ -53,6 +53,22 @@ const actions = {
 			})
 	},
 
+	verifyPreferenceValue(context, value) {
+		axios.post(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/api/verify_preference_value`), {
+			preference_value: value,
+		})
+			.then((res) => {
+				if ('preference_value' in res.data && res.data.preference_value === value) {
+					showSuccess(t('ui_example', 'Preference value is correct'))
+				} else {
+					showError(t('ui_example', 'Preference value is incorrect'))
+				}
+			})
+			.catch(() => {
+				showError(t('ui_example', 'Preference value is incorrect'))
+			})
+	},
+
 	sendNextcloudFileToExApp(context, fileInfo) {
 		axios.post(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/api/nextcloud_file`), {
 			file_info: fileInfo,
