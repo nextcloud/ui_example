@@ -23,7 +23,8 @@ help:
 	@echo "  L10N (for manual translation):"
 	@echo "  translation_templates      extract translation strings from sources"
 	@echo "  convert_translations_nc    convert translations to Nextcloud format files (json, js)"
-	@echo "  convert_to_locale    		copy translations to the common locale/<lang>/LC_MESSAGES/<appid>.(po|mo)"
+	@echo "  compile_po_to_mo           compile po files to mo files"
+	@echo "  copy_translations    		copy translations to the common locale/<lang>/LC_MESSAGES/<appid>.(po|mo)"
 
 .PHONY: build-push
 build-push:
@@ -80,6 +81,9 @@ translation_templates:
 convert_translations_nc:
 	./translationtool.phar convert-po-files
 
-.PHONY: convert_to_locale
-convert_to_locale:
-	./scripts/convert_to_locale.sh
+compile_po_to_mo:
+	bash ./scripts/compile_po_to_mo.sh
+
+.PHONY: copy_translations
+copy_translations:
+	bash ./scripts/copy_translations.sh
