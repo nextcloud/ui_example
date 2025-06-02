@@ -183,6 +183,15 @@ SETTINGS_EXAMPLE = SettingsForm(
             default="foo",
             options={_("First radio"): "foo", _("Second radio"): "bar", _("Third radio"): "baz"},
         ),
+        SettingsField(
+            id="test_ex_app_sensitive_field",
+            title=_("Password"),
+            description=_("Set some secure value setting with encryption"),
+            type=SettingsFieldType.PASSWORD,
+            default="",
+            placeholder=_("Set secure value"),
+            sensitive=True,
+        ),
     ],
 )
 
@@ -194,7 +203,10 @@ def enabled_handler(enabled: bool, nc: NextcloudApp) -> str:
             "top_menu",
             "first_menu",
             "ui_example_state",
-            {"initial_value": "test init value"},
+            {
+                "initial_value": "test init value",
+                "initial_sensitive_value": "test_sensitive_value",
+            },
         )
         nc.ui.resources.set_script("top_menu", "first_menu", "js/ui_example-main")
         nc.ui.top_menu.register("first_menu", "UI example", "img/app.svg")
@@ -234,6 +246,8 @@ def enabled_handler(enabled: bool, nc: NextcloudApp) -> str:
             ],
         )
 
+        nc.appconfig_ex.set_value("test_ex_app_sensitive_field", "test_sensitive_value", sensitive=True)
+
         if nc.srv_version["major"] >= 29:
             nc.ui.settings.register_form(SETTINGS_EXAMPLE)
     else:
@@ -247,11 +261,19 @@ def enabled_handler(enabled: bool, nc: NextcloudApp) -> str:
         nc.occ_commands.unregister("ui_example:ping")
         nc.occ_commands.unregister("ui_example:setup")
         nc.occ_commands.unregister("ui_example:stream")
+        nc.appconfig_ex.delete("test_ex_app_sensitive_field")
     return ""
 
 
 class Button1Format(BaseModel):
     initial_value: str
+
+
+class Button2Format(BaseModel):
+    sensitive_value: str
+
+class Button3Format(BaseModel):
+    preference_value: str
 
 
 @APP.post("/api/verify_initial_value")
@@ -262,6 +284,28 @@ async def verify_initial_value(
     return responses.JSONResponse(
         content={"initial_value": str(random.randint(0, 100))}, status_code=200
     )
+
+@APP.post("/api/verify_sensitive_value")
+async def verify_sensitive_value(
+    input1: Button2Format,
+    nc: Annotated[NextcloudApp, Depends(nc_app)],
+):
+    print("Old sensitive value: ", input1.sensitive_value)
+    sensitive_value = nc.appconfig_ex.get_value("test_ex_app_sensitive_field")
+    print("Sensitive value: ", sensitive_value)
+    return responses.JSONResponse(content={"sensitive_value": sensitive_value}, status_code=200)
+
+
+@APP.post("/api/verify_preference_value")
+async def verify_preference_value(
+    input1: Button3Format,
+    nc: Annotated[NextcloudApp, Depends(nc_app)],
+):
+    nc.preferences_ex.set_value("test_ex_app_sensitive_field", input1.preference_value, sensitive=True)
+    preference_value = nc.preferences_ex.get_value("test_ex_app_sensitive_field")
+    print("Old preference value: ", input1.preference_value)
+    print("Preference value: ", preference_value)
+    return responses.JSONResponse(content={"preference_value": preference_value}, status_code=200)
 
 
 @APP.post("/api/test_menu")
