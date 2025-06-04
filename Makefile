@@ -9,15 +9,15 @@ help:
 	@echo "  "
 	@echo "  build-push        build image and upload to ghcr.io"
 	@echo "  "
-	@echo "  run28             install UiExample for Nextcloud 28"
-	@echo "  run29             install UiExample for Nextcloud 29"
+	@echo "  run30             install UiExample for Nextcloud 30"
+	@echo "  run31             install UiExample for Nextcloud 31"
 	@echo "  run               install UiExample for Nextcloud Last"
 	@echo "  "
 	@echo "  For development of this example use PyCharm run configurations. Development is always set for last Nextcloud."
 	@echo "  First run 'UiExample' and then 'make registerXX', after that you can use/debug/develop it and easy test."
 	@echo "  "
-	@echo "  register28        perform registration of running UiExample into the 'manual_install' deploy daemon."
-	@echo "  register29        perform registration of running UiExample into the 'manual_install' deploy daemon."
+	@echo "  register30        perform registration of running UiExample into the 'manual_install' deploy daemon."
+	@echo "  register31        perform registration of running UiExample into the 'manual_install' deploy daemon."
 	@echo "  register          perform registration of running UiExample into the 'manual_install' deploy daemon."
 	@echo "  "
 	@echo "  L10N (for manual translation):"
@@ -29,39 +29,39 @@ help:
 .PHONY: build-push
 build-push:
 	docker login ghcr.io
-	docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/cloud-py-api/ui_example:latest .
+	docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/nextcloud/ui_example:latest .
 
-.PHONY: run28
-run28:
-	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
-	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:register ui_example \
-		--info-xml https://raw.githubusercontent.com/cloud-py-api/nc_py_api/main/examples/as_app/ui_example/appinfo/info.xml
+.PHONY: run30
+run30:
+	docker exec master-stable30-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
+	docker exec master-stable30-1 sudo -u www-data php occ app_api:app:register ui_example \
+		--info-xml https://raw.githubusercontent.com/nextcloud/ui_example/refs/heads/main/appinfo/info.xml
 
-.PHONY: run29
-run29:
-	docker exec master-stable29-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
-	docker exec master-stable29-1 sudo -u www-data php occ app_api:app:register ui_example \
-		--info-xml https://raw.githubusercontent.com/cloud-py-api/nc_py_api/main/examples/as_app/ui_example/appinfo/info.xml
+.PHONY: run31
+run31:
+	docker exec master-stable31-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
+	docker exec master-stable31-1 sudo -u www-data php occ app_api:app:register ui_example \
+		--info-xml https://raw.githubusercontent.com/nextcloud/ui_example/refs/heads/main/appinfo/info.xml
 
 .PHONY: run
 run:
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register ui_example \
-		--info-xml https://raw.githubusercontent.com/cloud-py-api/nc_py_api/main/examples/as_app/ui_example/appinfo/info.xml
+		--info-xml https://raw.githubusercontent.com/nextcloud/ui_example/refs/heads/main/appinfo/info.xml
 
-.PHONY: register28
-register28:
-	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
-	docker exec master-stable28-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-stable28-1:/tmp/ui_example_l10n
-	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
+.PHONY: register30
+register30:
+	docker exec master-stable30-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
+	docker exec master-stable30-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-stable30-1:/tmp/ui_example_l10n
+	docker exec master-stable30-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
   "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035, \"translations_folder\":\"\/tmp\/ui_example_l10n\", \"routes\": [{\"url\":\"img\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]},{\"url\":\"js\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"css\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"api\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}]}" \
   --wait-finish
 
-.PHONY: register29
-register29:
-	docker exec master-stable29-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
-	docker exec master-stable29-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-stable29-1:/tmp/ui_example_l10n
-	docker exec master-stable29-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
+.PHONY: register31
+register31:
+	docker exec master-stable31-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
+	docker exec master-stable31-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-stable31-1:/tmp/ui_example_l10n
+	docker exec master-stable31-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
   "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035, \"translations_folder\":\"\/tmp\/ui_example_l10n\", \"routes\": [{\"url\":\"img\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]},{\"url\":\"js\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"css\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"api\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":2,\"headers_to_exclude\":[]}]}" \
   --wait-finish
 
