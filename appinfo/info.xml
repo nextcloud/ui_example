@@ -12,16 +12,16 @@
 	<author mail="bigcat88@icloud.com" homepage="https://github.com/bigcat88">Alexander Piskun</author>
 	<namespace>PyUIExampleL10N</namespace>
 	<category>tools</category>
-	<website>https://github.com/cloud-py-api/ui_example</website>
-	<bugs>https://github.com/cloud-py-api/ui_example/issues</bugs>
-	<repository type="git">https://github.com/cloud-py-api/ui_example</repository>
+	<website>https://github.com/nextcloud/ui_example</website>
+	<bugs>https://github.com/nextcloud/ui_example/issues</bugs>
+	<repository type="git">https://github.com/nextcloud/ui_example</repository>
 	<dependencies>
-		<nextcloud min-version="28" max-version="31"/>
+		<nextcloud min-version="30" max-version="32"/>
 	</dependencies>
 	<external-app>
 		<docker-install>
 			<registry>ghcr.io</registry>
-			<image>cloud-py-api/ui_example</image>
+			<image>nextcloud/ui_example</image>
 			<image-tag>latest</image-tag>
 		</docker-install>
 		<routes>
