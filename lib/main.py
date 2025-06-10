@@ -210,9 +210,9 @@ def enabled_handler(enabled: bool, nc: NextcloudApp) -> str:
         )
         nc.ui.resources.set_script("top_menu", "first_menu", "js/ui_example-main")
         nc.ui.top_menu.register("first_menu", "UI example", "img/app.svg")
-        nc.ui.files_dropdown_menu.register("test_menu", _("Test menu"), "/test_menu", mime="image/jpeg",
+        nc.ui.files_dropdown_menu.register("test_menu", _("Test menu"), "/api/test_menu", mime="image/jpeg",
                                            icon="img/app-dark.svg")
-        nc.ui.files_dropdown_menu.register_ex("test_redirect", _("Test redirect"), "/test_redirect", mime="image/jpeg",
+        nc.ui.files_dropdown_menu.register_ex("test_redirect", _("Test redirect"), "/api/test_redirect", mime="image/jpeg",
                                               icon="img/app-dark.svg")
         nc.occ_commands.register("ui_example:ping", "/occ_ping")
         nc.occ_commands.register(
@@ -325,7 +325,7 @@ class NodesPayload(BaseModel):
     files: list[UiActionFileInfo]
 
 
-@APP.post("/test_redirect")
+@APP.post("/api/test_redirect")
 async def test_menu_handler(
     files: NodesPayload,
     nc: Annotated[NextcloudApp, Depends(nc_app)],
