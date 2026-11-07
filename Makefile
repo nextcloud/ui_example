@@ -54,7 +54,7 @@ register30:
 	docker exec master-stable30-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
 	docker exec master-stable30-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-stable30-1:/tmp/ui_example_l10n
 	docker exec master-stable30-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
-  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035, \"translations_folder\":\"\/tmp\/ui_example_l10n\", \"routes\": [{\"url\":\"img\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]},{\"url\":\"js\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"css\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"api\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}]}" \
+  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035, \"translations_folder\":\"\/tmp\/ui_example_l10n\", \"routes\": [{\"url\":\"^\\\/?img\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]},{\"url\":\"^\\\/?js\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"^\\\/?css\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"^\\\/?api\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}]}" \
   --wait-finish
 
 .PHONY: register31
@@ -62,7 +62,7 @@ register31:
 	docker exec master-stable31-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
 	docker exec master-stable31-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-stable31-1:/tmp/ui_example_l10n
 	docker exec master-stable31-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
-  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035, \"translations_folder\":\"\/tmp\/ui_example_l10n\", \"routes\": [{\"url\":\"img\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]},{\"url\":\"js\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"css\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"api\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":2,\"headers_to_exclude\":[]}]}" \
+  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035, \"translations_folder\":\"\/tmp\/ui_example_l10n\", \"routes\": [{\"url\":\"^\\\/?img\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]},{\"url\":\"^\\\/?js\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"^\\\/?css\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"^\\\/?api\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":2,\"headers_to_exclude\":[]}]}" \
   --wait-finish
 
 .PHONY: register
@@ -70,7 +70,7 @@ register:
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister ui_example --silent --force || true
 	docker exec master-nextcloud-1 rm -rf /tmp/ui_example_l10n && docker cp l10n master-nextcloud-1:/tmp/ui_example_l10n
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register ui_example manual_install --json-info \
-  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035, \"translations_folder\":\"\/tmp\/ui_example_l10n\", \"routes\": [{\"url\":\"img\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]},{\"url\":\"js\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"css\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"api\\\/.+\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}]}" \
+  "{\"id\":\"ui_example\",\"name\":\"UI Example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9035, \"translations_folder\":\"\/tmp\/ui_example_l10n\", \"routes\": [{\"url\":\"^\\\/?img\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]},{\"url\":\"^\\\/?js\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"^\\\/?css\\\/.*\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}, {\"url\":\"^\\\/?api\\\/.+\",\"verb\":\"GET, POST, PUT, DELETE\",\"access_level\":1,\"headers_to_exclude\":[]}]}" \
   --wait-finish
 
 .PHONY: translation_templates

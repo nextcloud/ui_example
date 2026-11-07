@@ -24,27 +24,28 @@
 			<image>nextcloud/ui_example</image>
 			<image-tag>latest</image-tag>
 		</docker-install>
+		<!-- "^\/?": HaRP and Nextcloud 32.0.10+ match the path with its leading "/", older Nextcloud without it -->
 		<routes>
 			<route>
-				<url>img\/.*</url>
+				<url>^\/?img\/.*</url>
 				<verb>GET</verb>
 				<access_level>USER</access_level>
 				<headers_to_exclude>[]</headers_to_exclude>
 			</route>
 			<route>
-				<url>js\/.*</url>
+				<url>^\/?js\/.*</url>
 				<verb>GET</verb>
 				<access_level>USER</access_level>
 				<headers_to_exclude>[]</headers_to_exclude>
 			</route>
 			<route>
-				<url>css\/.*</url>
+				<url>^\/?css\/.*</url>
 				<verb>GET</verb>
 				<access_level>USER</access_level>
 				<headers_to_exclude>[]</headers_to_exclude>
 			</route>
 			<route>
-				<url>api\/.*</url>
+				<url>^\/?api\/.*</url>
 				<verb>GET,POST,PUT,DELETE</verb>
 				<access_level>USER</access_level>
 				<headers_to_exclude>[]</headers_to_exclude>
